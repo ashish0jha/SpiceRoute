@@ -7,6 +7,7 @@ import LoginPage from './LoginPage';
 import { baseUrl } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import Footer from './Footer';
 
 const HomePage = () => {
     const data = useContext(UserContext);
@@ -35,6 +36,7 @@ const HomePage = () => {
             <div id="container">
                 <Header/>
                 <Outlet/>
+                <Footer/>
             </div>
         </UserContext.Provider>
     </>
