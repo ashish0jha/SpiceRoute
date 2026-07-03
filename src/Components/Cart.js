@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../utils/constants";
 import CartHeader from "./CartHeader";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
 
@@ -13,16 +14,26 @@ const Cart = () => {
 
     const dispatch = useDispatch();
     const [cartItems, setCartItems] = useState([]);
+    const navigate = useNavigate();
+
     const fetchCart = async () => {
         try {
             const res = await axios.get(baseUrl + "/cart/view", { withCredentials: true });
-            const itemsFromBE = res.data.cartItems[0].items;
+
+            const itemsFromBE = res.data.cartItems[0]?.items;
+            if(!itemsFromBE){
+                setCartItems([]);
+                return
+            } 
             setCartItems(itemsFromBE);
             for(let item of itemsFromBE){
                 dispatch(addItem(item));
             }
         }
         catch (err) {
+            if(err.status === 401){
+                navigate("/login")
+            }
             console.error(err.message);
         }
     }

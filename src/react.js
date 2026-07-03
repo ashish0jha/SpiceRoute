@@ -16,6 +16,7 @@ import LoginPage from './Components/LoginPage';
 import axios from 'axios';
 import { baseUrl } from './utils/constants';
 import HomePage from './Components/HomePage';
+import OrderHistory from './Components/OrderHistory';
 
 const MainApp = () => {
     return (
@@ -49,6 +50,10 @@ const AppRouter = createBrowserRouter([
                 path: "/cart",
                 element: <Cart />
             },
+            {
+                path:"/orderHistory",
+                element:<OrderHistory/>
+            }
         ],
         errorElement: <Error />,
     },

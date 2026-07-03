@@ -3,11 +3,27 @@ import axios from "axios";
 import { baseUrl } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 
-const Order = () => {
+const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const fetchOrderHistory = async()=>{
+    try{
+        const res = await axios.get(baseUrl+"/user/orderHistory",{withCredentials:true});
+        setOrders(res.data.orderDetails);
+    }
+    catch(err){
+        if(err.status===401){
+            navigate("/login")
+        }
+        console.error("");
+    }
+  }
+  useEffect(()=>{
+    fetchOrderHistory();
+  },[])
 
   return (
       <div className="flex flex-col items-center bg-[#15201A] min-h-screen px-4 py-8">
@@ -47,13 +63,13 @@ const Order = () => {
                                 </p>
                             </div>
                             <span className="px-3 py-1 rounded-full bg-[#0E2A18] text-[#27D673] text-xs font-bold w-fit">
-                                {order.status || "Placed"}
+                                {"Placed"}
                             </span>
                         </div>
 
                         <div className="flex flex-col gap-2 mb-3">
                             {order.items?.map((item, idx) => (
-                                <div key={idx} className="flex items-center justify-between text-sm">
+                                <div key={item.id} className="flex items-center justify-between text-sm">
                                     <span className="text-[#EAF7EE]">
                                         {item.name} <span className="text-[#8FBE9F]">× {item.qty}</span>
                                     </span>
@@ -64,7 +80,7 @@ const Order = () => {
 
                         <div className="flex items-center justify-between pt-3 border-t border-[#1B5230]">
                             <span className="text-[#8FBE9F] text-sm">Total</span>
-                            <span className="text-[#27D673] font-bold text-lg">₹{order.totalAmount}</span>
+                            <span className="text-[#27D673] font-bold text-lg">₹{order.amount/100}</span>
                         </div>
                     </div>
                 ))}
@@ -75,4 +91,4 @@ const Order = () => {
   )
 }
 
-export default Order;
+export default OrderHistory;

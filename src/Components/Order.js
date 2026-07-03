@@ -70,10 +70,10 @@ const Order = ({ amount, setCartItems }) => {
       }, 3000)
     }
     catch (err) {
-      console.log(err.status);
+      console.log(err.message);
     }
   }
-  
+
   const clearCartHandler = async () => {
     try {
       const res = await axios.delete(baseUrl + "/cart/clear", { withCredentials: true });
@@ -87,10 +87,34 @@ const Order = ({ amount, setCartItems }) => {
 
   return (
     <>
-      {orderDone && <div className={`fixed top-25 p-6 text-white z-50 rounded-2xl font-bold text-2xl ${
-          isSuccess ? "bg-green-500" : "bg-red-500"
-      }`}>
-        {orderMessage}
+      {orderDone && <div className={`fixed top-6 left-1/2 -translate-x-1/2 z-50
+        flex items-center gap-3
+        bg-[#123B22] border border-[#1B5230] rounded-2xl
+        px-4 py-3.5 shadow-2xl shadow-black/40
+        w-[90vw] md:w-auto md:min-w-[320px] md:max-w-[420px]
+        ${isSuccess ? "border-l-4 border-l-[#27D673]" : "border-l-4 border-l-red-500"}`}>
+
+            <div className="w-9 h-9 rounded-full bg-[#0E2A18] flex items-center justify-center shrink-0">
+                {isSuccess
+                    ? <span className="text-[#27D673] text-xl">✓</span>
+                    : <span className="text-red-400 text-xl">✕</span>
+                }
+            </div>
+
+            <div className="flex-1">
+                <p className="text-[#EAF7EE] text-sm font-semibold m-0">
+                    {isSuccess ? "Order placed" : "Payment failed"}
+                </p>
+                <p className="text-[#8FBE9F] text-xs mt-0.5 m-0">
+                    {isSuccess ? "Your food is on its way!" : "Something went wrong. Try again."}
+                </p>
+            </div>
+
+            <button
+                onClick={() => setOrderDone(false)}
+                className="text-[#8FBE9F] hover:text-[#EAF7EE] text-lg leading-none bg-transparent border-0 cursor-pointer shrink-0">
+                ✕
+            </button>
       </div>}
       <button
         className="border border-[#1B5230] p-2 m-2 md:m-5 bg-[#27D673] text-[#06250F] rounded-lg font-bold cursor-pointer hover:bg-[#c3e3d1]"

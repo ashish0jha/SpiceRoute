@@ -5,16 +5,20 @@ import axios from 'axios';
 import Header from './Header';
 import LoginPage from './LoginPage';
 import { baseUrl } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const HomePage = () => {
     const data = useContext(UserContext);
     const [userName, setUserName] = useState("");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const checkLogin = async(req,res)=>{
         try{
             const res = await axios.get(baseUrl+"/checklogin",{withCredentials:true});
             setUserName(res.data.fullName)
-            dispatch(addUser(res.data.fullName))
+            dispatch(addUser(res.data))
         }
         catch(err) {
             if(err.statusCode===401){
