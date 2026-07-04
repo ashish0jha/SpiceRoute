@@ -74,18 +74,18 @@ const Footer = () => {
 
                         <div className="flex gap-4 mt-6 text-2xl">
                             <a href="https://github.com/ashish0jha" target="_blank" className="hover:scale-110 transition-transform">
-                                <img alt="leetcode icon" className="h-8" src="https://img.icons8.com/?size=160&id=lkh3AbJLmFpp&format=png"/>
+                                <img alt="Github icon" className="h-8" src="https://img.icons8.com/?size=160&id=lkh3AbJLmFpp&format=png"/>
                             </a>
 
                             <a href="https://www.linkedin.com/in/ashish-kumar-ojha-b63428291/" target="_blank" className="hover:scale-110 transition-transform">
-                                <img alt="leetcode icon" className="h-8" src="https://img.icons8.com/?size=96&id=13930&format=png"/>
+                                <img alt="Linkden icon" className="h-8" src="https://img.icons8.com/?size=96&id=13930&format=png"/>
                             </a>
                             <a href="https://leetcode.com/u/ashish0jha/" target="_blank" className="hover:scale-110 transition-transform">
-                                <img alt="leetcode icon" className="h-7" src="https://img.icons8.com/?size=160&id=9L16NypUzu38&format=png"/>
+                                <img alt="LeetCode icon" className="h-7" src="https://img.icons8.com/?size=160&id=9L16NypUzu38&format=png"/>
                             </a>
 
                             <a href="https://www.instagram.com/ashish0jha/" target="_blank" className="hover:scale-110 transition-transform">
-                                <img alt="leetcode icon" className="h-8" src="https://img.icons8.com/?size=160&id=aimNrfnvOM9T&format=png"/>
+                                <img alt="Instagram icon" className="h-8" src="https://img.icons8.com/?size=160&id=aimNrfnvOM9T&format=png"/>
                             </a>
 
                         </div>
