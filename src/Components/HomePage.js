@@ -14,6 +14,7 @@ const HomePage = () => {
     const [userName, setUserName] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isFooter = location.pathname === "/helpdesk"
 
     const checkLogin = async(req,res)=>{
         try{
@@ -36,7 +37,7 @@ const HomePage = () => {
             <div id="container">
                 <Header/>
                 <Outlet/>
-                <Footer/>
+                {!isFooter && <Footer/>}
             </div>
         </UserContext.Provider>
     </>

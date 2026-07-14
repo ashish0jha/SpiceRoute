@@ -49,6 +49,10 @@ const AppRouter = createBrowserRouter([
                 path:"/orderHistory",
                 element:<OrderHistory/>
             },
+            {
+                path:"/helpdesk",
+                element:<HelpChat/>
+            }
         ],
         errorElement: <Error />,
     },
@@ -56,10 +60,6 @@ const AppRouter = createBrowserRouter([
         path: "/login",
         element: <LoginPage />
     },
-    {
-        path:"/helpdesk",
-        element:<HelpChat/>
-    }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

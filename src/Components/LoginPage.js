@@ -9,6 +9,7 @@ import { addUser } from "../utils/userSlice"
 const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
+  const [seePassword,setSeePassword] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -100,12 +101,13 @@ const LoginPage = () => {
           <div>
             <label className="text-[#8FBE9F] text-sm mb-1 block">Password</label>
             <input
-              type="password"
+              type={seePassword ? "text" : "password"}
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-[#1B5230] p-2.5 rounded-lg bg-[#0E2A18] text-[#EAF7EE] placeholder:text-[#8FBE9F]/60 outline-none focus:ring-2 focus:ring-[#27D673]/60 focus:border-[#27D673]"
             />
+            <p className="text-green-200 text-xs text-right cursor-pointer hover:text-green-300" onClick={()=>setSeePassword(val => !val)}>{seePassword ? "hide password" : "see password"}</p>
             {!isLogin && <p className="text-white text-[12px] text-center">(minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1)</p>}
           </div>
 

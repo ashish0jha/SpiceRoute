@@ -3,7 +3,6 @@ import { Send, Bot, User, Search, HelpCircle } from 'lucide-react'
 import axios from 'axios';
 import { baseUrl } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
 
 const HelpChat = () => {
   const [message, setMessage] = useState('');
@@ -16,9 +15,18 @@ const HelpChat = () => {
   const [messages, setMessages] = useState(dummyData)
 
   useEffect(()=>{
+    async function fetchPastChat (){
+      const res = await axios.get(baseUrl+"/pastChat",{withCredentials:true});
+      if(res.data.pastChat){
+        setMessages(res.data.pastChat.messages);
+      }
+    }
+    fetchPastChat();
+  },[])
+
+  useEffect(()=>{
     bottomRef.current.scrollIntoView({behavior:"smooth"});
   },[messages])
-  
 
   const responseHandler = async () => {
     try {
@@ -42,7 +50,6 @@ const HelpChat = () => {
 
   return (
     <div className='min-h-screen bg-[#0a1f13] text-emerald-50'>
-      <Header/>
       <div className='flex items-center px-10 py-5 border-b border-emerald-900/40'>
         <div className='flex items-center gap-2'>
           <div className='w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center'>
@@ -52,7 +59,7 @@ const HelpChat = () => {
         </div>
       </div>
 
-      <div className='bg-[#0f2e1a] md:w-1/2 mx-3 md:mx-auto rounded-2xl border border-emerald-800/50 flex flex-col h-[36rem] overflow-hidden'>
+      <div className='bg-[#0f2e1a] md:w-1/2 mx-3 md:mx-auto rounded-2xl border border-emerald-800/50 flex flex-col h-144 overflow-hidden'>
         <div className='sticky top-0 flex items-center gap-2 px-5 py-4 bg-emerald-500'>
           <Bot size={20} className='text-emerald-950' />
           <span className='font-bold text-emerald-950'>Chat with support</span>

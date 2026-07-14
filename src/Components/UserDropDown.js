@@ -57,7 +57,7 @@ const UserDropDown = () => {
 
             {dropdownOpen && (
                 <div className="absolute right-0 top-12 w-52 bg-[#123B22] border border-[#1B5230]
-                rounded-2xl overflow-hidden shadow-2xl shadow-black/40 z-[999]">
+                rounded-2xl overflow-hidden shadow-2xl shadow-black/40 z-999">
 
                     <div className="px-4 py-3 border-b border-[#1B5230]">
                         <p className="text-[#EAF7EE] text-sm font-semibold m-0">{user?.fullName}</p>
