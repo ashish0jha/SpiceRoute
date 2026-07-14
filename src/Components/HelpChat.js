@@ -3,6 +3,7 @@ import { Send, Bot, User, Search, HelpCircle } from 'lucide-react'
 import axios from 'axios';
 import { baseUrl } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 const HelpChat = () => {
   const [message, setMessage] = useState('');
@@ -41,7 +42,7 @@ const HelpChat = () => {
 
   return (
     <div className='min-h-screen bg-[#0a1f13] text-emerald-50'>
-
+      <Header/>
       <div className='flex items-center px-10 py-5 border-b border-emerald-900/40'>
         <div className='flex items-center gap-2'>
           <div className='w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center'>
