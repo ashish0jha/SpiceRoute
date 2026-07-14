@@ -6,6 +6,7 @@ import onlineStatus from "../utils/useonlinestatus";
 import axios from "axios";
 import { baseUrl } from "../utils/constants";
 import useRestaurants from "../utils/useRestra";
+import HelpDesk from "./HelpDesk";
 
 let resiii;
 
@@ -120,6 +121,7 @@ const Body = () => {
                     <p className="text-center text-[#8FBE9F]">You've reached the end 🍃</p>
                 )}
             </div>
+            <HelpDesk/>
         </div>
     )
 }

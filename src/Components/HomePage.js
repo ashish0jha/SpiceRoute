@@ -22,7 +22,7 @@ const HomePage = () => {
             dispatch(addUser(res.data))
         }
         catch(err) {
-            if(err.statusCode===401){
+            if(err.status===401){
                 navigate("/login")
             }
         }

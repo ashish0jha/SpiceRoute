@@ -17,18 +17,13 @@ import axios from 'axios';
 import { baseUrl } from './utils/constants';
 import HomePage from './Components/HomePage';
 import OrderHistory from './Components/OrderHistory';
-
-const MainApp = () => {
-    return (
-        <HomePage/>
-    )
-}
+import HelpChat from './Components/HelpChat';
 
 //creating Children Routes
 const AppRouter = createBrowserRouter([
     {
         path: "/",
-        element: <MainApp />,
+        element: <HomePage />,
         children: [
             {
                 path: "/",
@@ -53,7 +48,7 @@ const AppRouter = createBrowserRouter([
             {
                 path:"/orderHistory",
                 element:<OrderHistory/>
-            }
+            },
         ],
         errorElement: <Error />,
     },
@@ -61,6 +56,10 @@ const AppRouter = createBrowserRouter([
         path: "/login",
         element: <LoginPage />
     },
+    {
+        path:"/helpdesk",
+        element:<HelpChat/>
+    }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

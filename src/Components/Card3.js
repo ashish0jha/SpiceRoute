@@ -10,7 +10,7 @@ const Cards3=({Res})=>{
     const navigate = useNavigate();
     
     return(
-        <div className='w-full md:w-70 h-75 my-1.25 mx-auto md:mx-2.5 hover:shadow-2xl rounded-4xl hover:scale-105 duration-300 bg-[#123B22] border border-[#1B5230] overflow-hidden'
+        <div className='w-full md:w-70 h-75 my-1.25 mx-auto md:mx-2.5 hover:shadow-2xl rounded-4xl hover:scale-105 duration-300 bg-[#123B22] border border-[#1B5230] overflow-hidden cursor:pointer'
             onClick={()=>{
                 navigate(`/restaurant/${resId}`)
             }}>
