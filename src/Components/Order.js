@@ -60,6 +60,7 @@ const Order = ({ amount, setCartItems }) => {
         setOrderMessage("Your Order is placed SuccessFully");
         setIsSuccess(true)
         clearCartHandler();
+        navigate("/orderHistory")
       } else {
         setOrderMessage("Payment failed");
         setIsSuccess(false)
@@ -91,7 +92,7 @@ const Order = ({ amount, setCartItems }) => {
         flex items-center gap-3
         bg-[#123B22] border border-[#1B5230] rounded-2xl
         px-4 py-3.5 shadow-2xl shadow-black/40
-        w-[90vw] md:w-auto md:min-w-[320px] md:max-w-[420px]
+        w-[90vw] md:w-auto md:min-w-[320px] md:max-w-105
         ${isSuccess ? "border-l-4 border-l-[#27D673]" : "border-l-4 border-l-red-500"}`}>
 
             <div className="w-9 h-9 rounded-full bg-[#0E2A18] flex items-center justify-center shrink-0">
